@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+
+<!-- css파일을 사용할 경우 링크 설정-->
+<!-- <link rel="stylesheet" th:href="@{/css/style.css}"></link> -->
+
+</head>
+<body>
+	<div>
+		<h2>게시판 상세</h2>
+
+		<form id="frm" name = "frm" method="POST" action="">
+			<table>
+				<!-- 각 컬럼의 공간 설정 -->
+				<colgroup>
+					<col width = "15%">
+					<col width = "*">
+					<col width= "15%">
+					<col width= "20%">
+				</colgroup>
+				<caption>게시글 상세내용</caption>
+
+				<!-- 게시글 정보 및 내용 -->
+				<tbody>
+					<tr>
+						<th scope="row">글번호</th>
+						<td th:text="${board.boardIdx}"></td>
+						<th scope="row">조회수</th>
+						<td th:text="${board.hitCnt}"></td>
+					</tr>
+					<tr>
+						<th scope="row">작성자</th>
+						<td th:text="${board.creatorId}"></td>
+			
+						<th scope="row">작성일</th>
+						<td th:text="${board.createDatetime}"></td>
+					</tr>
+					<tr>
+						<th scope="row">제목</th>
+						<td colspan="3">
+							<input type="text" id="title" name="title" th:value="${board.title}">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<textarea title="내용" id="contents" name="contents" th:text="${board.contents}"></textarea>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!-- 임시 버튼 -->
+			<input type="submit" id="submit" value="저장">
+		</form>
+	</div>
+</body>
+</html>

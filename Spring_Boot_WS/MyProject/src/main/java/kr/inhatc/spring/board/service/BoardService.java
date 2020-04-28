@@ -7,5 +7,9 @@ import kr.inhatc.spring.board.dto.BoardDto;
 public interface BoardService {
 
 	List<BoardDto> boardList();
+
+	void boardInsert(BoardDto board);
+
+	BoardDto boardDetail(int boardIdx);
 	
 }

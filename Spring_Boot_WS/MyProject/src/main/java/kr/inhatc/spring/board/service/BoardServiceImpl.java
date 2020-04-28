@@ -20,4 +20,17 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.boardList();
 	}
 
+	@Override
+	public void boardInsert(BoardDto board) {
+		// TODO Auto-generated method stub
+		boardMapper.boardInsert(board);
+	}
+
+	@Override
+	public BoardDto boardDetail(int boardIdx) {
+		// TODO Auto-generated method stub
+		BoardDto board = boardMapper.boardDetail(boardIdx);
+		return board;
+	}
+
 }

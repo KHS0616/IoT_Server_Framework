@@ -13,4 +13,8 @@ public interface BoardMapper {
 	// 메소드의 이름과 쿼리의 이름을 동일하게 처리
 	List<BoardDto> boardList();
 
+	void boardInsert(BoardDto board);
+
+	BoardDto boardDetail(int boardIdx);
+
 }
