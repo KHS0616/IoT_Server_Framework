@@ -42,6 +42,7 @@ public class DataBaseConfiguration {
 		return dataSource;
 	}
 	
+	//sql 관련 세션 설정
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception
 	{		

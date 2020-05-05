@@ -54,9 +54,22 @@ public class BoardController {
 	{
 		//글 번호를 매개변수로, 서비스 호출 후 결과 저장
 		BoardDto board = boardService.boardDetail(boardIdx);
-		
 		//모델을 통해 데이터 전달
 		model.addAttribute("board", board);
 		return "board/boardDetail";
+	}
+	
+	@RequestMapping("/board/boardUpdate")
+	public String boardUpdate(BoardDto board)
+	{
+		boardService.boardUpdate(board);
+		return "redirect:/board/boardList";
+	}
+	
+	@RequestMapping("/board/boardDelete")
+	public String boardDelete(@RequestParam("boardIdx") int boardIdx)
+	{
+		boardService.boardDelete(boardIdx);
+		return "redirect:/board/boardList";
 	}
 }

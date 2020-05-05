@@ -5,15 +5,15 @@
 <title>게시판</title>
 
 <!-- css파일을 사용할 경우 링크 설정-->
-<!-- <link rel="stylesheet" th:href="@{/css/style.css}"></link> -->
+<link rel="stylesheet" th:href="@{/css/style.css}"></link>
 
 </head>
 <body>
-	<div>
+	<div class="container">
 		<h2>게시판 작성</h2>
 
 		<form id="frm" name = "frm" method="POST" action="/board/boardInsert">
-			<table>
+			<table class="board_detail">
 				<tr>
 					<td>제목</td>
 					<td><input type="text" id="title" name="title"/></td>
@@ -24,7 +24,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="submit" id="submit" value="저장">
+			<input type="submit" id="submit" value="저장" class="btn">
 		</form>
 	</div>
 </body>

@@ -5,15 +5,15 @@
 <title>게시판</title>
 
 <!-- css파일을 사용할 경우 링크 설정-->
-<!-- <link rel="stylesheet" th:href="@{/css/style.css}"></link> -->
+<link rel="stylesheet" th:href="@{/css/style.css}"></link>
 
 </head>
 <body>
-	<div>
+	<div class="container">
 		<h2>게시판 상세</h2>
 
-		<form id="frm" name = "frm" method="POST" action="">
-			<table>
+		<form id="frm" name = "frm" method="POST">
+			<table class="board_detail">
 				<!-- 각 컬럼의 공간 설정 -->
 				<colgroup>
 					<col width = "15%">
@@ -51,10 +51,44 @@
 					</tr>
 				</tbody>
 			</table>
-
-			<!-- 임시 버튼 -->
-			<input type="submit" id="submit" value="저장">
+			
+			<!-- 글 번호는 DB로 직접 불러온게 아니라 전달받은 값을 이용한 값이므로 따로 전달해야된다. -->
+			<input type="hidden" name="boardIdx" th:value="${board.boardIdx}">
+			<!-- 기능 버튼 -->
+			<input type="button" id="list" value="목록으로" class="btn">
+			<input type="button" id="edit" value="수정하기" class="btn">
+			<input type="button" id="delete" value="삭제하기" class="btn">
 		</form>
 	</div>
+
+	<!-- 스크립트를 사용하기 위해 소스 주소 설정 및 스크립트 설정-->
+	<script src="http://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+	crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// 목록으로 버튼 클릭시 boardList기능 수행
+			$("#list").on("click", function(){
+				location.href = "/board/boardList"
+			});
+
+			// 수정하기 버튼 클릭시 boardUpdate기능 수행
+			// 폼을 전달할 때, action 기능을 통해 대상 주소 설정
+			$("#edit").on("click", function(){
+				var frm = $("#frm")[0];
+				frm.action = "/board/boardUpdate"
+				frm.submit()
+			});
+
+			// 삭제하기 버튼 클릭시 boardDelete기능 수행
+			// 폼을 전달할 때, action 기능을 통해 대상 주소 설정
+			$("#delete").on("click", function(){
+				var frm = $("#frm")[0];
+				frm.action = "/board/boardDelete"
+				frm.submit()
+			});
+		});
+	</script>
+
 </body>
 </html>
