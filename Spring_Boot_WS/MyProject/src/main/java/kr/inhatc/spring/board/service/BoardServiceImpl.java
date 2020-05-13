@@ -1,11 +1,19 @@
 package kr.inhatc.spring.board.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import kr.inhatc.spring.board.dto.BoardDto;
+import kr.inhatc.spring.board.dto.FileDto;
 import kr.inhatc.spring.board.mapper.BoardMapper;
+import kr.inhatc.spring.utils.FileUtils;
 
 //어노테이션을 통해 서비스임을 알린다. 클래스에 올려야된다
 @Service
@@ -13,7 +21,9 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	private BoardMapper boardMapper;
-
+	
+	private FileUtils fileUtils = new FileUtils();
+	
 	@Override
 	public List<BoardDto> boardList() {
 		// TODO Auto-generated method stub
@@ -21,9 +31,17 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void boardInsert(BoardDto board) {
+	public void boardInsert(BoardDto board, MultipartHttpServletRequest multipartHttpServletRequest) {
 		// TODO Auto-generated method stub
 		boardMapper.boardInsert(board);
+		
+		// 파일 저장
+		List<FileDto> list = fileUtils.parseFileInfo(board.getBoardIdx(), multipartHttpServletRequest);
+
+		// DB에 파일 저장
+		if(!CollectionUtils.isEmpty(list)) {
+			boardMapper.boardFileInsert(list);
+		}
 	}
 
 	@Override

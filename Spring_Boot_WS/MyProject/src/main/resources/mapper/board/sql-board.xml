@@ -49,4 +49,27 @@
         FROM t_board
         WHERE board_idx = #{boardIdx}
     </delete>
+    
+    <!-- 파일 업로드 -->
+    <insert id="boardFileInsert" parameterType="kr.inhatc.spring.board.dto.FileDto">
+    	INSERT INTO T_FILE(
+    		idx, 
+    		board_idx, 
+    		original_file_Name, 
+    		stored_file_Path, 
+    		file_Size, 
+    		creator_Id, 
+    		create_Datetime
+    	)
+    	SELECT file_seq.NEXTVAL, A.* FROM(
+    		<foreach item="item" collection="list" separator="UNION ALL">
+    			SELECT #{item.boardIdx} as board_idx,
+    					#{item.originalFileName} as original_file_Name,
+    					#{item.storedFilePath} as stored_file_Path,
+    					#{item.fileSize} as file_size,
+    					'admin',
+    					sysdate
+    				FROM DUAL    		
+    		</foreach>) A
+    </insert>
 </mapper>

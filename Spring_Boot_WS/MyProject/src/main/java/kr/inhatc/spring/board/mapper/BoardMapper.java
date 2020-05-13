@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.inhatc.spring.board.dto.BoardDto;
+import kr.inhatc.spring.board.dto.FileDto;
 
 //데이터를 불러오기 위한 어노테이션
 @Mapper
@@ -22,5 +23,7 @@ public interface BoardMapper {
 	void updateHit(int boardIdx);
 
 	void boardDelete(int boardIdx);
+
+	void boardFileInsert(List<FileDto> list);
 
 }
