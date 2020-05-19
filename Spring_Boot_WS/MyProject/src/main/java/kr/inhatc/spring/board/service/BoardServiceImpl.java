@@ -48,6 +48,12 @@ public class BoardServiceImpl implements BoardService {
 	public BoardDto boardDetail(int boardIdx) {
 		// TODO Auto-generated method stub
 		BoardDto board = boardMapper.boardDetail(boardIdx);
+		
+		//파일 정보를 불러오고 보드에 설정 후 반환
+		List<FileDto> fileList = boardMapper.selectBoardFileList(boardIdx);
+		board.setFileList(fileList);
+		
+		//조회수 업데이트
 		boardMapper.updateHit(boardIdx);
 		return board;
 	}
@@ -60,8 +66,14 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void boardDelete(int boardIdx) {
-		// TODO Auto-generated method stub
 		boardMapper.boardDelete(boardIdx);
+	}
+
+	
+	@Override
+	public FileDto selectFileInfo(int idx, int boardIdx) {
+		FileDto boardFile = boardMapper.selectFileInfo(idx, boardIdx);
+		return boardFile;
 	}
 
 }

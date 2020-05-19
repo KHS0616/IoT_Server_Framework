@@ -26,4 +26,8 @@ public interface BoardMapper {
 
 	void boardFileInsert(List<FileDto> list);
 
+	List<FileDto> selectBoardFileList(int boardIdx);
+
+	FileDto selectFileInfo(int idx, int boardIdx);
+
 }
