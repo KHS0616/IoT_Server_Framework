@@ -30,12 +30,12 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	// 주수창에 / 입력시 해당 html 페이지로 이동
-	@RequestMapping("/")
-	public String hello()
-	{
-		return "index";
-	}
+//	// 주수창에 / 입력시 해당 html 페이지로 이동
+//	@RequestMapping("/")
+//	public String hello()
+//	{
+//		return "index";
+//	}
 	
 	@RequestMapping("/board/boardList")
 	public String boardList(Model model)
