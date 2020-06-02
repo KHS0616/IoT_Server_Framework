@@ -26,7 +26,7 @@ public class UserController {
 	@RequestMapping("/")
 	public String hello()
 	{
-		return "redirect:/user/userList";
+		return "index";
 	}
 	
 	//RESTFUL 기반  API
