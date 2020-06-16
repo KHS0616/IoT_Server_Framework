@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <header th:fragment="menuFragment">
+
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="/">김한솔</a>
+		<a class="navbar-brand" href="#">김한솔</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -12,32 +14,29 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="https://www.youtube.com/">유튜브(현재창)
+				<li class="nav-item active"><a class="nav-link" href="/">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="https://www.google.com/" target="blank">구글(새창)</a></li>
-				<li class="nav-item"><a class="nav-link" href="/board/boardList">게시판</a></li>
+				<li class="nav-item"><a class="nav-link" href="/user/userList">사용자</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> 사용자 </a>
+					aria-expanded="false"> 즐겨찾기 </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/member/memberList">Member</a> 
-						<a class="dropdown-item" href="/user/userList">User</a>
+						<a class="dropdown-item" href="https://tykimos.github.io/" target="f_main">김태영 케라스 블로그</a> 
+						<a class="dropdown-item" href="https://under-desk.tistory.com/22?category=811987" target="f_main">ISTQB 실라버스 문제풀이</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="http://cyber.inhatc.ac.kr/">이러닝시스템</a>
+						<a class="dropdown-item" href="#">Something else here</a>
 					</div></li>
-				
-				
-				<!-- <li class="nav-item"><a class="nav-link disabled" href="#"
-					tabindex="-1" aria-disabled="true">Disabled</a></li> -->
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
-				<button class="btn btn-outline-primary btn-sm" type="button"><a th:href="@{/login/login}" class="text-white">로그인</a></button>
-				&nbsp;
-				<button class="btn btn-outline-primary btn-sm" type="button"><a th:href="@{/login/logout}" class="text-white">로그아웃</a></button>
+				<input class="form-control mr-sm-2" type="search"
+					placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
 		</div>
 	</nav>
+
 </header>
+
 </html>

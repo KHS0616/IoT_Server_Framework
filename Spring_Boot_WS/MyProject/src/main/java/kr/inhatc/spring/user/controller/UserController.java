@@ -1,9 +1,6 @@
 package kr.inhatc.spring.user.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,22 +44,8 @@ public class UserController {
 	
 	//사용자 등록
 	@RequestMapping(value = "/user/userInsert", method=RequestMethod.GET)
-	public String userWrite(Model model) {
-		List<String> enabledList = new ArrayList<>();
-		enabledList.add("가 능");
-		enabledList.add("불 가 능");
-
-		List<String> authorityList = new ArrayList<>();
-		authorityList.add("ROLE_GUEST");
-		authorityList.add("ROLE_MEMBER");
-		authorityList.add("ROLE_ADMIN");
-
-		Map<String, List<String>> map = new HashMap<>();
-		map.put("enabledList", enabledList);
-		map.put("authorityList", authorityList);
-
-		model.addAttribute("map", map);
-
+	public String userWrite()
+	{
 		return "user/userWrite";
 	}
 	
